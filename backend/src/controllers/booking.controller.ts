@@ -25,7 +25,6 @@ export const getBookings = async (req: ExtendRequest, res: Response) => {
 
         console.log(id, 'id')
 
-        // Obtener la reservaciónes del usuario
 
         const bookings = await BookingModel.find({
             where: {

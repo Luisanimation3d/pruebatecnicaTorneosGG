@@ -11,7 +11,6 @@ import {EventDetail} from "./pages/EventDetail/EventDetail.tsx";
 import {BookingEvent} from "./pages/BookingEvent/BookingEvent.tsx";
 import {MyBookings} from "./pages/MyBookings/MyBookings.tsx";
 import {NotFound} from "./pages/NotFound/NotFound.tsx";
-import {ProtectedRoute} from "./components/ProtectedRoute/ProtectedRoute.tsx";
 
 export default function App() {
     return (

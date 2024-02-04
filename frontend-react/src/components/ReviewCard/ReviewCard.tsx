@@ -32,7 +32,6 @@ export const ReviewCard = ({review}: ReviewElement) => {
 
     const fechaConvertida = new Date(new Date(review.createdAt).getTime() + (diferenciaHoraria * 60 * 1000));
 
-    console.log(fechaConvertida);
 
     return (
         <div className={styles.review__card__container}>

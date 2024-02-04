@@ -57,7 +57,6 @@ export const getEvent = async (req: Request, res: Response) => {
             relations: ['bookings']
         });
 
-        // Sumar todos los numberBooking de bookings
         let totalBookings = 0;
 
         bookings[0].bookings.forEach((booking: any) => {
