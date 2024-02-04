@@ -23,8 +23,6 @@ export const MyBookings = () => {
     }
 
 
-    console.log(data?.bookings, 'data')
-
     return (
         <>
             <section className={styles.section__my__events}>
@@ -32,7 +30,7 @@ export const MyBookings = () => {
                     {
                         loading ? <Loader/> : error ?
                             <p>Hubo un error</p> : data && data?.bookings?.length ? data.bookings?.map((booking: any) => (
-                            <EventCard event={booking.event} key={booking.event.id} onClick={() => {
+                            <EventCard event={booking.event} key={booking.id} onClick={() => {
                                 setEventId(booking.event.id)
                                 setBookingId(booking.id)
                                 setModalOpen(true)
@@ -49,7 +47,10 @@ export const MyBookings = () => {
                     <>
                         <ModalContainer setOpenMdal={setModalOpen}>
                             <Modal setOpenModal={setModalOpen}>
-                                <BookingDetailModal idEvent={eventId as number} idBooking={bookingId as number} getMethod={getMethod}/>
+                                <BookingDetailModal idEvent={eventId as number} idBooking={bookingId as number} getMethod={()=>{
+                                    getMethod()
+                                    setModalOpen(false)
+                                }}/>
                             </Modal>
                         </ModalContainer>
                     </>

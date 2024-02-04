@@ -1,10 +1,17 @@
 import {HeaderProfile} from "../../components/HeaderProfile/HeaderProfile.tsx";
 import {FiBook, FiBookmark, FiHome, FiTool} from 'react-icons/fi'
-
+import {useSelector} from "react-redux";
 import './UserProfileLayout.css';
-import {Outlet} from "react-router-dom";
+import {Outlet, Navigate} from "react-router-dom";
 
 export const UserProfileLayout = () => {
+
+    const { isAuthenticated } = useSelector((state: any) => state.auth)
+
+    if(!isAuthenticated) {
+        return <Navigate to='/login'/>
+    }
+
     return (
         <div>
             <HeaderProfile items={[

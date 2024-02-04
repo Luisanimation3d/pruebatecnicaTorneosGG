@@ -1,6 +1,12 @@
 import {Request, Response} from "express";
 import {ReviewModel} from "../models/Review.model";
-import {optionsPagination} from "generaltypes";
+import {JwtPayloadWithTokenData, optionsPagination} from "generaltypes";
+import {EventModel} from "../models/Event.model";
+
+interface ExtendRequest extends Request {
+    user?: JwtPayloadWithTokenData
+}
+
 
 export const getReviews = async (req: Request, res: Response) => {
 
@@ -41,11 +47,30 @@ export const getReview = async (req: Request, res: Response) => {
 
     try {
         const {id} = req.params;
-        const review = await ReviewModel.findOneBy({id: parseInt(id)});
-        if (!review) {
-            return res.status(404).json({msg: 'No existe la review'});
+        const event = await EventModel.findOne({
+            where: {id: parseInt(id)}
+        });
+
+        if (!event) {
+            return res.status(404).json({msg: 'No existe el evento'});
         }
-        return res.status(200).json({review});
+
+        const reviews = await ReviewModel.find({
+            where: {
+                event: {
+                    id: parseInt(id)
+                }
+            },
+            relations: ['user']
+        });
+
+        let totalQualification = 0;
+        reviews.forEach((review: any) => {
+            totalQualification += review.qualification;
+        })
+
+
+        return res.status(200).json({event, reviews, totalQualification: totalQualification / reviews.length});
     } catch (e) {
         console.log(e);
         if (e instanceof Error) {
@@ -54,11 +79,26 @@ export const getReview = async (req: Request, res: Response) => {
     }
 }
 
-export const createReview = async (req: Request, res: Response) => {
+export const createReview = async (req: ExtendRequest, res: Response) => {
     try {
-        const {user, event, date, comment, qualification} = req.body;
-        const review = await ReviewModel.create({user, event, date, comment, qualification}).save();
-        return res.status(201).json({review});
+        const {event, title, comment, qualification} = req.body;
+
+        if (!title) {
+            return res.status(400).json({title: 'El título es requerido'});
+        }
+
+        if (!comment) {
+            return res.status(400).json({comment: 'El comentario es requerido'});
+        }
+
+        if (!qualification) {
+            return res.status(400).json({qualification: 'La calificación es requerida'});
+        }
+
+        const {id: userId} = req.user;
+
+        const review = await ReviewModel.create({user: userId, event, title, comment, qualification}).save();
+        return res.status(201).json({review, msg: 'Review creada'});
     } catch (e) {
         console.log(e);
         if (e instanceof Error) {
@@ -70,13 +110,13 @@ export const createReview = async (req: Request, res: Response) => {
 export const updateReview = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
-        const {user, event, date, comment, qualification} = req.body;
+        const {user, event, comment, qualification} = req.body;
         const review = await ReviewModel.findOneBy({id: parseInt(id)});
         if (!review) {
             return res.status(404).json({msg: 'No existe la review'});
         }
 
-        await ReviewModel.update(review.id, {user, event, date, comment, qualification});
+        await ReviewModel.update(review.id, {user, event, comment, qualification});
 
         return res.status(200).json({review});
     } catch (e) {

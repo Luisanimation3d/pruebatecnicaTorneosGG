@@ -21,7 +21,5 @@ export const AppDataSource = new DataSource({
     synchronize: true,
     logging: true,
     ssl: true,
-    dropSchema: true,
+    dropSchema: false,
 })
-
-// postgres://pruebatecnica_user:ppd4Sbr3pw6zPJd9KtQPkMAeSgtKeRZC@dpg-cmsmkkmd3nmc73euse1g-a.oregon-postgres.render.com/pruebatecnica

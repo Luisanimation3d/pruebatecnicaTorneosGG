@@ -13,8 +13,6 @@ export const getBookings = async (req: ExtendRequest, res: Response) => {
 
     try {
 
-        // const {id} = req.query;
-
         const {id} = req.user;
 
         const {page, limit, order} = req.query;
@@ -79,6 +77,9 @@ export const createBooking = async (req: ExtendRequest, res: Response) => {
     try {
         const {event, numberBooking} = req.body;
         const {id} = req.user;
+        if(!numberBooking) {
+            return res.status(400).json({numberBooking: 'El número de reservaciones es requerido'});
+        }
         const booking = await BookingModel.create({user: id, event, numberBooking}).save();
         return res.status(200).json({booking, msg: 'Reserva creada'});
     } catch (e) {

@@ -51,17 +51,31 @@ export const EventDetailModal = ({id, owner = false}: { id: number, owner?: bool
                             <p className={styles.event__description}>{event?.description}</p>
                             {
                                 !owner &&
-                                <Button text={event?.number_assistants === 0 ? 'Agotado' : 'Hacer Reservación'}
-                                        onClick={() => {
+                                <Button
+                                    text={new Date(event?.date as Date) < new Date() ? 'Deja tu reseña' : event?.number_assistants === 0 ? 'Agotado' : 'Hacer Reservación'}
+                                    onClick={() => {
+                                        if (new Date(event?.date as Date) < new Date()) {
+                                            navigate(`/event-detail/${id}`)
+                                        } else {
                                             navigate(`/booking-event/${id}`)
-                                        }}
-                                        autosize={false} disabled={event?.number_assistants === 0}
+                                        }
+                                    }}
+                                    autosize={false} disabled={event?.number_assistants === 0}
 
                                 />
                             }
-                            <span className={styles.places__aviables} style={{
-                                color: event?.number_assistants === 0 ? 'red' : event?.number_assistants && event.number_assistants < 10 ? '#ae455b' : '#26415c'
-                            }}>Quedan {event?.number_assistants} lugares disponibles</span>
+
+                            {
+                                !owner && new Date(event?.date as Date) < new Date() && (
+                                    <span className={styles.places__aviables}>El evento ya finalizó, pasa y deja tu reseña o comentario</span>
+                                )
+                            }
+                            {
+                                !(new Date(event?.date as Date) < new Date()) && (
+                                    <span className={styles.places__aviables} style={{
+                                        color: event?.number_assistants === 0 ? 'red' : event?.number_assistants && event.number_assistants < 10 ? '#ae455b' : '#26415c'
+                                    }}>Quedan {event?.number_assistants} lugares disponibles</span>
+                                )}
                         </div>
                     </>
                 )

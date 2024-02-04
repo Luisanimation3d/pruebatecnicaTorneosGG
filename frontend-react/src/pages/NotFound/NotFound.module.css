@@ -1,0 +1,46 @@
+.not__found__title {
+    font-size: 10rem;
+    font-weight: 700;
+    position: relative;
+    background-image: linear-gradient(45deg, #C38EB4 0, #0c1e32 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.not__found__title::before {
+    content: '404';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: linear-gradient(45deg, #C38EB4 0, #18406c 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: blur(10px);
+    font-size: 10rem;
+    font-weight: 700;
+}
+
+
+.not__found__subtitle{
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    background-image: linear-gradient(45deg, #C38EB4 0, #26425A 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.not__found__subtitle::before {
+    content: 'Not Found';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: linear-gradient(45deg, #C38EB4 0, #18406c 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: blur(10px);
+    font-size: 2rem;
+    font-weight: 700;
+}

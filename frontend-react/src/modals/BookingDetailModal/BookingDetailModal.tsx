@@ -29,6 +29,7 @@ export const BookingDetailModal = ({idEvent, idBooking, getMethod}: {
     const {data, loading, get} = useFetch('http://localhost:3000/api')
     const {data: dataBooking, loading: loadingBooking, get: getBooking, del} = useFetch('http://localhost:3000/api')
 
+
     useEffect(() => {
         get(`/events/${idEvent}`)
     }, []);
@@ -36,11 +37,6 @@ export const BookingDetailModal = ({idEvent, idBooking, getMethod}: {
     useEffect(() => {
         getBooking(`/bookings/${idBooking}`)
     }, []);
-
-    const updateBooking = () => {
-        getBooking(`/bookings/${idBooking}`)
-        getMethod()
-    }
 
     useEffect(() => {
         if (data) {
@@ -73,14 +69,12 @@ export const BookingDetailModal = ({idEvent, idBooking, getMethod}: {
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 }).then(() => {
-                    setTimeout(() => {
-                        updateBooking()
-                    }, 1000)
+                    getMethod()
                 })
             }
         }
         ,
-        []
+        [dataBooking]
     )
 
 

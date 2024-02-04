@@ -25,9 +25,6 @@ export class ReviewModel extends BaseEntity{
     event: EventModel;
 
     @Column()
-    date: Date;
-
-    @Column()
     title: string;
 
     @Column()

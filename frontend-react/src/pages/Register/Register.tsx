@@ -89,7 +89,6 @@ export function Register() {
                 const formData = new FormData();
                 formData.append('image', file);
                 postFile('/users/upload', formData)
-                console.log('se está enviando la imagen al servidor')
             }
         }
     ]
@@ -126,6 +125,18 @@ export function Register() {
         if (registerForm.birthday && new Date(registerForm.birthday).getFullYear() >= new Date().getFullYear()) {
             errors.birthdate = 'La fecha de nacimiento no puede ser mayor a la fecha actual'
         }
+        let edad = new Date().getFullYear() - new Date(registerForm.birthday).getFullYear()
+        const mes = new Date().getMonth() + 1
+        const dia = new Date().getDate()
+
+        if(mes < (new Date(registerForm.birthday).getMonth() + 1) || (mes === (new Date(registerForm.birthday).getMonth() + 1) && dia < new Date(registerForm.birthday).getDate())){
+            edad--
+        }
+
+        if(edad < 16){
+            errors.birthdate = 'Debes ser mayor de 16 años para registrarte'
+        }
+
         setErrorRegister(errors)
         return Object.keys(errors).length === 0
     }

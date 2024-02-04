@@ -1,8 +1,9 @@
 import styles from './ReviewCard.module.css';
 import moment from "moment";
 import 'moment/locale/es';
+import {ReviewElement} from "../../types/generaltypes";
 
-export const ReviewCard = () => {
+export const ReviewCard = ({review}: ReviewElement) => {
 
     moment.locale('es', {
         relativeTime: {
@@ -23,56 +24,30 @@ export const ReviewCard = () => {
         }
     });
 
+    // Capturar la fecha de creación del comentario y mostrarla en formato relativo (hace 2 días, hace 3 horas, etc) con moment.js y la configuración de idioma en español (moment.locale('es')) y con la zona horaria local del usuario.
+
+    const fechaActual = new Date();
+
+    const diferenciaHoraria = fechaActual.getTimezoneOffset() - new Date(review.createdAt).getTimezoneOffset();
+
+    const fechaConvertida = new Date(new Date(review.createdAt).getTime() + (diferenciaHoraria * 60 * 1000));
+
+    console.log(fechaConvertida);
+
     return (
         <div className={styles.review__card__container}>
             <div className={styles.review__card__userImage__container}>
-                <img src="https://www.w3schools.com/howto/img_avatar.png" alt="user"/>
+                <img src={`http://localhost:3000/api/users/image/${review.user.image}`} alt="user"/>
             </div>
             <div className={styles.review__card__content__container}>
                 <div className={styles.review__card__header}>
-                    <h4 className={styles.review__card__username}>Jhon Doe</h4>
-                    <span className={styles.review__card__date}>{moment('2024-01-31 02:23:59.175').fromNow()}</span>
+                    <h4 className={styles.review__card__username}>{review.user.firstname} {review.user.lastname}</h4>
+                    <span className={styles.review__card__date}>{moment(fechaConvertida).fromNow()}</span>
                 </div>
-                <p className={styles.review__card__content}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Adipisci
-                    alias
-                    amet
-                    aspernatur atque autem cumque, delectus doloremque doloribus eaque eligendi eos
-                    error
-                    est
-                    eum
-                    eveniet
-                    excepturi expedita facilis fuga harum id in ipsa iure laborum magni maxime
-                    minima
-                    molestias
-                    natus
-                    nemo
-                    non
-                    odio officia optio pariatur placeat porro quae quaerat quas quia quidem
-                    quisquam
-                    quo
-                    ratione
-                    recusandae
-                    rem
-                    repellendus
-                    repudiandae
-                    rerum
-                    saepe
-                    sapiente
-                    sequi
-                    similique
-                    sit
-                    soluta
-                    sunt
-                    suscipit
-                    tempore
-                    tenetur
-                    totam
-                    ullam
-                    unde
-                    voluptas
-                    voluptates
-                    voluptatum.
+                <p className={styles.review__card__content}>
+                    {
+                        review.comment
+                    }
                 </p>
             </div>
         </div>

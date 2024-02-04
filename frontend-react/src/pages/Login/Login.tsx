@@ -74,7 +74,13 @@ export function Login() {
                 showConfirmButton: false,
                 timer: 1500
             })
-            navigate('/profile')
+            const local = localStorage.getItem('lastPath')
+            if (local) {
+                navigate(local)
+                localStorage.removeItem('lastPath')
+            } else {
+                navigate('/profile')
+            }
         }
     }, [data]);
 
@@ -87,7 +93,7 @@ export function Login() {
             <div className={styles.login__form__container}>
                 <Form fields={fields} onSubmit={handleSubmit} title={'Iniciar Sesión'} cancelButton={false}
                       errors={error || errorLogin}
-                        textButton={loading ? <Loader/> : 'Iniciar Sesión'}
+                      textButton={loading ? <Loader/> : 'Iniciar Sesión'}
                 />
                 <span className={styles.register__link}>¿Aún no tienes una cuenta? <Link
                     to={'/register'}>Haz clic aquí</Link></span>

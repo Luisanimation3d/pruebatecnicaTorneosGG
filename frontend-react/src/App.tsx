@@ -10,8 +10,10 @@ import {MyEvents} from "./pages/MyEvents/MyEvents.tsx";
 import {EventDetail} from "./pages/EventDetail/EventDetail.tsx";
 import {BookingEvent} from "./pages/BookingEvent/BookingEvent.tsx";
 import {MyBookings} from "./pages/MyBookings/MyBookings.tsx";
+import {NotFound} from "./pages/NotFound/NotFound.tsx";
+import {ProtectedRoute} from "./components/ProtectedRoute/ProtectedRoute.tsx";
 
-export default function App (){
+export default function App() {
     return (
         <>
             <BrowserRouter>
@@ -23,6 +25,7 @@ export default function App (){
                         <Route path={'/register'} element={<Register/>}/>
                         <Route path={'/event-detail/:id'} element={<EventDetail/>}/>
                         <Route path={'/booking-event/:id'} element={<BookingEvent/>}/>
+                        <Route path={'*'} element={<NotFound/>}/>
                     </Route>
                     <Route path={'/profile/'} element={<UserProfileLayout/>}>
                         <Route path={'create-event'} element={<Create/>}/>

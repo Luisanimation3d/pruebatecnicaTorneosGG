@@ -64,6 +64,24 @@ export const getUser = async (req: ExtendRequest, res: Response) => {
 export const createUser = async (req: Request, res: Response) => {
     try {
         const {firstname, lastname, email, password, birthday, image} = req.body;
+
+        const userExist = await UserModel.findOne({where: {email}});
+        if (userExist) {
+            return res.status(400).json({email: 'El email ya está registrado'});
+        }
+
+        let edad = new Date().getFullYear() - new Date(birthday).getFullYear()
+        const mes = new Date().getMonth() + 1
+        const dia = new Date().getDate()
+
+        if(mes < (new Date(birthday).getMonth() + 1) || (mes === (new Date(birthday).getMonth() + 1) && dia < new Date(birthday).getDate())){
+            edad--
+        }
+
+        if(edad < 16){
+            return res.status(400).json({birthday: 'Debes ser mayor de 16 años para registrarte'})
+        }
+
         const passwordHash = bycript.hashSync(password, 10);
         const user = await UserModel.create({firstname, lastname, email, password: passwordHash, birthday, image}).save();
         if (!user) {

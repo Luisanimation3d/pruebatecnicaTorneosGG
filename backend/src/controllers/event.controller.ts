@@ -61,7 +61,7 @@ export const getEvent = async (req: Request, res: Response) => {
         let totalBookings = 0;
 
         bookings[0].bookings.forEach((booking: any) => {
-            totalBookings += booking.numberBooking;
+            totalBookings += booking.state ? booking.numberBooking : 0;
         });
 
         return res.status(200).json({event: {...event, number_assistants: event.number_assistants - totalBookings}});
@@ -77,8 +77,29 @@ export const createEvent = async (req: ExtendRequest, res: Response) => {
     try {
         const {id} = req.user;
         const {name, description, date, number_assistants, image} = req.body;
+
+        if(!name) {
+            return res.status(400).json({name: 'El nombre es requerido'});
+        }
+        if (!description) {
+            return res.status(400).json({description: 'La descripción es requerida'});
+        }
+        if (!date) {
+            return res.status(400).json({date: 'La fecha es requerida'});
+        }
+        if (!number_assistants) {
+            return res.status(400).json({number_assistants: 'El número de asistentes es requerido'});
+        }
+        if (!image) {
+            return res.status(400).json({image: 'La imagen es requerida'});
+        }
+
+        if(new Date(date) < new Date()) {
+            return res.status(400).json({date: 'La fecha no puede ser menor a la actual'});
+        }
+
         const event = await EventModel.create({name, description, date, number_assistants, image, user: id}).save();
-        return res.status(200).json({event});
+        return res.status(200).json({event, msg: 'Evento creado'});
     } catch (e) {
         console.log(e);
         if (e instanceof Error) {

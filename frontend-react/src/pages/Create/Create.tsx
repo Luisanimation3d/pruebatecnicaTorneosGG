@@ -3,6 +3,8 @@ import {Form} from "../../components/Form/Form.tsx";
 import React, {useEffect, useState} from "react";
 import {useFetch} from "../../hooks/useFetch.ts";
 import {FiLoader} from "react-icons/fi";
+import Swal from "sweetalert2";
+import {useNavigate} from "react-router-dom";
 
 export function Create() {
 
@@ -17,8 +19,10 @@ export function Create() {
         image: ''
     })
 
+    const navigate = useNavigate();
+
     const numberAssistantsValidation = (value: string) => {
-        return parseInt(value) >= 1;
+        return parseInt(value) < 0 ? 0 : parseInt(value);
     }
 
     const formFields: FormField[] = [
@@ -52,7 +56,7 @@ export function Create() {
             type: 'number',
             size: 'medium',
             value: createEvent.number_assistants,
-            onChange: (value) => setCreateEvent({...createEvent, number_assistants: numberAssistantsValidation(value) ? parseInt(value) : 0})
+            onChange: (value) => setCreateEvent({...createEvent, number_assistants: numberAssistantsValidation(value)})
         },
         {
             name: 'image',
@@ -76,6 +80,7 @@ export function Create() {
         if (createEvent.date === '') errors.date = 'La fecha es obligatoria';
         if (createEvent.number_assistants === 0) errors.number_assistants = 'El número de asistentes es obligatorio';
         if (createEvent.image === '') errors.image = 'La imagen es obligatoria';
+        if(new Date() > new Date(createEvent.date)) errors.date = 'La fecha no puede ser anterior a la actual';
         return errors;
     }
 
@@ -91,7 +96,6 @@ export function Create() {
 
     useEffect(() => {
         if (data.msg === "Imagen subida" && formFilled) {
-            console.log('ingreso a la creación del evento', data);
             post('/events', {
                 name: createEvent.name,
                 description: createEvent.description,
@@ -99,6 +103,15 @@ export function Create() {
                 number_assistants: createEvent.number_assistants,
                 image: data.image
             })
+        }
+        if(data.msg === 'Evento creado'){
+            Swal.fire({
+                icon: 'success',
+                title: 'Evento creado',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            navigate('/profile/my-events')
         }
     }, [data, formFilled]);
 

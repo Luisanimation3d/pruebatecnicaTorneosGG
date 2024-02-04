@@ -74,3 +74,28 @@ type SideBarMenuItemProps = {
 export type SideBarMenuProps = {
     items: SideBarMenuItemProps[];
 }
+
+export interface ReviewElement {
+    review: {
+        id: number;
+        title: string;
+        comment: string;
+        qualification: number;
+        createdAt: Date;
+        updatedAt: Date;
+        user: User;
+    }
+}
+
+export interface User {
+    id:        number;
+    firstname: string;
+    lastname:  string;
+    email:     string;
+    password:  string;
+    birthday:  Date;
+    image:     string;
+    state:     boolean;
+    createdAt: Date;
+    updatedAt: Date;
+}

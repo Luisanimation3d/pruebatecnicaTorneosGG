@@ -2,14 +2,18 @@ import {Loader} from "../../components/Loader/Loader.tsx";
 import styles from "./BookingEvent.module.css";
 import moment from "moment"
 import React, {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {useFetch} from "../../hooks/useFetch.ts";
 import {event} from "../../types/generaltypes";
 import {Form} from "../../components/Form/Form.tsx";
 import {FormField} from "../../types/formTypes";
 import Swal from "sweetalert2";
+import {useSelector} from "react-redux";
 
 export const BookingEvent = () => {
+
+
+    const { isAuthenticated } = useSelector((state: any) => state.auth)
 
     moment.locale('es', {
         months: [
@@ -97,7 +101,11 @@ export const BookingEvent = () => {
         }
     }, [data]);
 
-    return (
+    if(!isAuthenticated) {
+        localStorage.setItem('lastPath', `/booking-event/${id}`);
+    }
+
+    return !isAuthenticated ? (<Navigate to='/login'/>) : (
         <>
             {
                 loading ? (<Loader/>) : !error && (
