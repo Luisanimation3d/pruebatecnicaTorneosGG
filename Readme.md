@@ -32,8 +32,6 @@ npm run dev
 
 Esto iniciará el servidor de desarrollo de Vite y podrás acceder al frontend en `http://localhost:5173`.
 
-
-
 ## Backend (Node.js y Express)
 
 ### Instalación
@@ -96,36 +94,34 @@ Para comenzar a utilizar la aplicación:
 1. Clona este repositorio en tu máquina local.
 2. Sigue las instrucciones proporcionadas en los directorios `frontend` y `backend` para instalar las dependencias y ejecutar los respectivos servidores.
 
+![](https://i.ibb.co/t4BKBMT/2024-02-04-15-41-07-image.png)
 
+![](https://i.ibb.co/2SCpXXx/2024-02-04-15-47-55-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-41-07-image.png)
+![](https://i.ibb.co/v3hNpk0/2024-02-04-15-48-12-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-47-55-image.png)
+![](https://i.ibb.co/1RYSHGf/2024-02-04-15-48-31-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-48-12-image.png)
+![](https://i.ibb.co/r3VMF2p/2024-02-04-15-41-28-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-48-31-image.png)
+![](https://i.ibb.co/QNDPmpS/2024-02-04-15-41-42-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-41-28-image.png)
+![](https://i.ibb.co/LQxcZJN/2024-02-04-15-45-51-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-41-42-image.png)
+![](https://i.ibb.co/WgDK2sM/2024-02-04-15-47-17-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-45-51-image.png)
+![](https://i.ibb.co/Chqs3NS/2024-02-04-15-47-30-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-47-17-image.png)
+![](https://i.ibb.co/51WfMPL/2024-02-04-15-49-08-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-47-30-image.png)
+![](https://i.ibb.co/kQN427K/2024-02-04-15-49-22-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-49-08-image.png)
+![](https://i.ibb.co/y6zB1rR/2024-02-04-15-55-35-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-49-22-image.png)
+![](https://i.ibb.co/7NXhnDT/2024-02-04-15-50-01-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-55-35-image.png)
+![](https://i.ibb.co/26DDmts/2024-02-04-15-52-19-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-50-01-image.png)
+![](https://i.ibb.co/JcFv1d7/2024-02-04-15-52-56-image.png)
 
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-52-19-image.png)
-
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-52-56-image.png)
-
-![](C:\Users\LUIS%20ANGEL\AppData\Roaming\marktext\images\2024-02-04-15-54-25-image.png)
+![](https://i.ibb.co/fkBHzVY/2024-02-04-15-54-25-image.png)
