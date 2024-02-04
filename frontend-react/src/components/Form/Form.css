@@ -1,0 +1,101 @@
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    background: #121212;
+    gap: 1rem;
+}
+
+form h1{
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #C38EB4;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.formInputContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* General Inputs */
+
+form .inputCheckbox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 0.5rem;
+}
+
+form .inputCheckbox input[type="checkbox"] {
+    cursor: pointer;
+    background-color: #fff;
+    width: 12px;
+    height: 12px;
+    appearance: none;
+    border: 2px solid #888;
+    border-radius: 50%;
+    outline: none;
+    position: relative;
+}
+
+form .inputCheckbox input[type="checkbox"]::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border-radius: 50%; /* Ajusta el valor de la propiedad border-radius según desees */
+    transition: background-color 0.3s ease-in-out;
+}
+
+form .inputCheckbox input[type="checkbox"]:checked::before {
+    background-color: #C38EB4;
+}
+
+form .inputControl {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.formControllerContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.formController__error{
+    color: #9f212f;
+    font-size: 0.8rem;
+    font-weight: lighter;
+}
+
+.formControllerContainer--large{
+    width: 100%
+}
+
+.formControllerContainer--medium {
+    width: calc(50% - 8px);
+}
+
+@media (max-width: 768px) {
+    .formControllerContainer--medium {
+        width: 100%;
+    }
+}

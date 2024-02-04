@@ -1,0 +1,80 @@
+.image__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+.image__container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+}
+
+.event__title{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #26425A;
+}
+
+.event__date{
+    font-size: .8rem;
+    font-weight: 500;
+    color: #26425A;
+}
+
+.event__description{
+    font-size: 1rem;
+    font-weight: 400;
+    color: #26425A;
+    text-align: justify;
+    margin: 1rem 0;
+}
+
+.places__aviables{
+    font-size: .8rem;
+    font-weight: 600;
+    margin-top: .8rem;
+}
+
+.numberBooking{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #26425A;
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 768px){
+    .image__container{
+        height: 150px;
+    }
+    .event__title{
+        font-size: 1.5rem;
+    }
+    .event__date{
+        font-size: .7rem;
+    }
+    .event__description{
+        font-size: .9rem;
+    }
+    .places__aviables{
+        font-size: .7rem;
+    }
+    .numberBooking{
+        font-size: 1rem;
+    }
+}

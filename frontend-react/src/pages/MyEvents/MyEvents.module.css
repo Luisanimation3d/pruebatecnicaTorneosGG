@@ -1,0 +1,36 @@
+.section__my__events{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    max-width: 1500px;
+    margin: 0;
+    padding: 2rem 0;
+    gap: 2rem;
+}
+
+.my__events__cards__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.empty{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    border-radius: 5px;
+    color: #C38EB4;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+}

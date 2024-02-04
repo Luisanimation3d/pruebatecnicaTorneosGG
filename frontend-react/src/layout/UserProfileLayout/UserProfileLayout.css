@@ -1,0 +1,20 @@
+.sideBarMenu__container.sideBarMenu__container--active ~ .userProfileLayout__mainContent{
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    left: 0;
+}
+
+.userProfileLayout__mainContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+    height: 100vh;
+    top: 0;
+    left: 80px;
+    width: calc(100% - 80px);
+    padding: 3rem 0;
+    background-color: #121212;
+    transition: all .5s ease-in-out;
+}

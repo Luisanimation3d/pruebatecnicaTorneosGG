@@ -1,0 +1,81 @@
+.login__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    height: 60vh;
+    overflow: hidden;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.login__image__container{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__image__container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login__form__container{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #121212;
+    padding: 2rem;
+}
+
+.register__link{
+    margin-top: 1rem;
+    text-align: center;
+    color: #C38EB4;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.register__link a{
+    color: #C38EB4;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.register__link a:after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #C38EB4;
+    transition: width 0.3s;
+}
+
+.register__link:hover a:after{
+    width: 100%;
+}
+
+@media screen and (max-width: 1024px){
+
+    .login__container{
+        box-shadow: none;
+    }
+
+    .login__image__container{
+        display: none;
+    }
+
+    .login__form__container{
+        width: 100%;
+    }
+}
+

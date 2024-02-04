@@ -1,0 +1,160 @@
+footer{
+    background-color: #121212;
+    width: 100%;
+    padding: 2rem 0;
+    box-shadow: 0 -11px 52px -31px rgba(195, 142, 180, 0.5);
+}
+
+.social__media__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    list-style: none;
+}
+
+.icon__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #121212;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.tooltip{
+    position: absolute;
+    top: 0;
+    font-size: .8rem;
+    padding: .5rem .8rem;
+    border-radius: .5rem;
+    pointer-events: none;
+    opacity: 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.tooltip:after{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+}
+
+.icon__container:hover .tooltip{
+    top: -50px;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.icon{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon__container.instagram:hover .icon{
+    color: #7339de;
+}
+
+.icon__container.instagram .icon{
+    color: #C38EB4;
+}
+
+.icon__container.instagram:hover{
+    box-shadow: inset 0 0 6px 3px rgba(12, 30, 50, 0.5);
+    background: rgb(195, 142, 180);
+}
+
+.instagram{
+    box-shadow: 0 0 6px 3px rgba(195, 142, 180, 0.5);
+}
+
+.icon__container.instagram .tooltip{
+    box-shadow: 0 0 6px 3px rgba(195, 142, 180, 0.5);
+    background-color: #C38EB4;
+    color: #7339de;
+}
+
+.icon__container.instagram .tooltip:after{
+    border-top-color: #C38EB4;
+}
+
+/*----*/
+
+.icon__container.github:hover .icon{
+    color: #26425A;
+}
+
+.icon__container.github .icon{
+    color: #909aa4;
+}
+
+.icon__container.github:hover{
+    box-shadow: inset 0 0 6px 3px rgba(12, 30, 50, 0.5);
+    background: rgb(144, 154, 164);
+}
+
+.github{
+    box-shadow: 0 0 6px 3px rgba(144, 154, 164, 0.5);
+}
+
+.icon__container.github .tooltip{
+    box-shadow: 0 0 6px 3px rgba(144, 154, 164, 0.5);
+    background-color: #909aa4;
+    color: #26425A;
+}
+
+.icon__container.github .tooltip:after{
+    border-top-color: #909aa4;
+}
+
+/*----*/
+
+.icon__container.linkedin:hover .icon{
+    color: #E1CBD7;
+}
+
+.icon__container.linkedin .icon{
+    color: #4383b6;
+}
+
+.icon__container.linkedin:hover{
+    box-shadow: inset 0 0 6px 3px rgba(12, 30, 50, 0.5);
+    background: rgb(67, 131, 182);
+}
+
+.linkedin{
+    box-shadow: 0 0 6px 3px rgba(67, 131, 182, 0.5);
+}
+
+.icon__container.linkedin .tooltip{
+    box-shadow: 0 0 6px 3px rgba(67, 131, 182, 0.5);
+    background-color: #4383b6;
+    color: #E1CBD7;
+}
+
+.icon__container.linkedin .tooltip:after{
+    border-top-color: #4383b6;
+}
+
+.footer__text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: #C38EB4;
+    font-size: .8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+}
